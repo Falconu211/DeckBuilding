@@ -13,16 +13,20 @@ public class Cards : MonoBehaviour
 
     private Collider2D setPositonCollider;
 
-    private int myCost;
+    public int myCost;
+    public int myHp;
+    public int myNumber;
 
     private SetTotalCost setTotalCost;
 
     public void SetCardParametor(CharactorParametor parametor, int myNumber)
     {
-        myCost = parametor.charactorCost;
-        costText.text = "Cost:" + myCost;
-        hpText.text = "Hp:" + parametor.charactorHp;
-        myNumberText.text = "No." + myNumber;
+        this.myCost = parametor.charactorCost;
+        this.myHp = parametor.charactorHp;
+        this.myNumber = myNumber;
+        costText.text = "Cost:" + this.myCost;
+        hpText.text = "Hp:" + this.myHp;
+        myNumberText.text = "No." + this.myNumber;
     }
 
     public void InitSetTotalCost(SetTotalCost setTotalCost)
@@ -39,6 +43,7 @@ public class Cards : MonoBehaviour
 
         if (setPositonCollider != null)
         {
+            setTotalCost.SubtractCost(myCost);
             setPositonCollider.enabled = true;
             setPositonCollider = null;
         }
@@ -71,14 +76,6 @@ public class Cards : MonoBehaviour
         }
         else
         {
-            if (setPositonCollider != null)
-            {
-                setPositonCollider.enabled = true;
-                setPositonCollider = null;
-            }
-
-            setTotalCost.SubtractCost(myCost);
-
             transform.position = startingCardPosition;
             Debug.Log(startingCardPosition);
             isCardInSetPosition = false;
