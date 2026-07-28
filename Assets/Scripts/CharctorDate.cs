@@ -5,11 +5,6 @@ public class CharactorData : MonoBehaviour
 {
     public List<CharactorParametor> charactorData = new List<CharactorParametor>();
 
-    int randomCharactorHpUpperLimit = 1000;
-    int randomCharactorHpLowerLimit = 1;
-    int randomCharactorCostUpperLimit = 10;
-    int randomCharactorCostLowerLimit = 1;
-
     private void Start()
     {
         CharactorParametor charactor1 = new CharactorParametor();
@@ -32,15 +27,6 @@ public class CharactorData : MonoBehaviour
         charactorData.Add(charactor8);
         charactorData.Add(charactor9);
         charactorData.Add(charactor10);
-
-        for (int i = 0; i <= charactorData.Count -1; i++)
-        {
-            int randomCharactorHp = Random.Range(randomCharactorHpLowerLimit,randomCharactorHpUpperLimit);
-            int randomCharactorCost = Random.Range(randomCharactorCostLowerLimit, randomCharactorCostUpperLimit);
-
-            charactorData[i].charactorHp = randomCharactorHp;
-            charactorData[i].charactorCost = randomCharactorCost;
-        }
     }
 }
 
